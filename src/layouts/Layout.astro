@@ -1,14 +1,35 @@
+---
+import './src/styles/global.css'
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+const {hideLayout = true} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+
+		<!-- HTML Meta Tags  -->
+		<title>Inckarri</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content="..." />
+
+		<!-- og Meta Tags -->
+		<meta property="og.url" content="#"/>
+		<meta property="og.type" content="website"/>
+		<meta property="og.title" content="Inckarri" />
+		<meta property="og.description" content="..." />
+		<meta property="og.image" content="#" />
 	</head>
 	<body>
-		<slot />
+		{ !hideLayout && <Header />}
+		<main>
+			<slot />
+		</main>
+		{ !hideLayout && <Footer />}
 	</body>
 </html>
 
