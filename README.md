@@ -1,4 +1,7 @@
-# Astro Starter Kit: Basics
+# inkarri-frontend
+Frontend para el proyecto inkarri.
+
+## Astro Starter Kit: Basics
 
 ```sh
 npm create astro@latest -- --template basics
