@@ -1,0 +1,85 @@
+---
+// const keys = Object.keys(users[0]) as Array<keyof (typeof users)[0]>;
+
+// ejemplo con api publica de spacexdata
+import { type APISpacexResponce } from "../../types/api.ts";
+const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    query: {},
+    options: {
+      limit: 10,
+      sort: {
+        flight_number: "desc",
+      },
+    },
+  }),
+});
+
+// const data = JSON.stringify(await res.json());
+// console.log(data);
+const { docs: launches } = (await res.json()) as APISpacexResponce;
+---
+
+<h1 class="font-bold">Lanzamiento Space X</h1>
+<table border="1" class="w-full">
+  <thead> </thead>
+  <tbody>
+    {
+      launches.map((launch) => (
+        <tr data-id={launch.id}>
+          <td>{launch.flight_number}</td>
+          <td>{launch.name}</td>
+          <td>{launch.date_utc}</td>
+          <td>{launch.success ? "Success" : "Failure"}</td>
+          <td>{launch.links.reddit.campaign}</td>
+          <td>
+            <a href={`/dashboard/datails/${launch.id}`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-dots"
+              >
+                <>
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                </>
+              </svg>
+            </a>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
