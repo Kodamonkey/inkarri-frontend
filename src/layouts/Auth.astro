@@ -1,0 +1,38 @@
+---
+import './src/styles/global.css'
+
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- HTML Meta Tags  -->
+		<title>Inckarri</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="Bienvenido a Inckarri, una página increíble." />
+
+		<!-- og Meta Tags -->
+		<meta property="og.url" content="#"/>
+		<meta property="og.type" content="website"/>
+		<meta property="og.title" content="Inckarri" />
+		<meta property="og.description" content="..." />
+		<meta property="og.image" content="#" />
+	</head>
+	<body>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
