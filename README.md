@@ -14,6 +14,15 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+
+## Ramas
+
+- `main` -> Versión estable y en producción. (se mantiene)
+- `develop` -> Código en desarrollo. (se mantiene)
+- `feature/*` -> Para cada nueva funcionalidad. (eliminar al merge)
+- `bugfix/*` -> Para corrección de errores en desarrollo. (eliminar al merge)
+- `hotfix/*` -> Para correcciones críticas en producción. (eliminar al merge)
+
 ## Docs 
 
 - [just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
