@@ -1,30 +1,18 @@
 ---
 import './src/styles/global.css'
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 
-const {hideLayout = true} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-<<<<<<< HEAD
-		<meta name="viewport" content="width=device-width" />
-=======
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
->>>>>>> develop
 
 		<!-- HTML Meta Tags  -->
 		<title>Inckarri</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<<<<<<< HEAD
-		<meta name="description" content="..." />
-=======
 		<meta name="description" content="Bienvenido a Inckarri, una página increíble." />
-		<base href="/"> 
->>>>>>> develop
 
 		<!-- og Meta Tags -->
 		<meta property="og.url" content="#"/>
@@ -33,16 +21,10 @@ const {hideLayout = true} = Astro.props;
 		<meta property="og.description" content="..." />
 		<meta property="og.image" content="#" />
 	</head>
-<<<<<<< HEAD
 	<body>
-=======
-	<body class="flex flex-col gap-4">
->>>>>>> develop
-		{ !hideLayout && <Header />}
 		<main>
 			<slot />
 		</main>
-		{ !hideLayout && <Footer />}
 	</body>
 </html>
 

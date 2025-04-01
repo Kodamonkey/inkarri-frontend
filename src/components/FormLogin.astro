@@ -1,0 +1,52 @@
+---
+import { isRegistered, isValidEmail, registerUser } from "../utils/auth";
+
+const errors = { username: "", email: "", password: "" };
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("username") as string;
+    const email = data.get("email") as string;
+    const password = data.get("password") as string;
+    if (typeof name !== "string" || name.length < 1) {
+      errors.username += "Please enter a username. ";
+    }
+    if (typeof email !== "string" || !isValidEmail(email)) {
+      errors.email += "Email is not valid. ";
+    } else if (await isRegistered(email)) {
+      errors.email += "Email is already registered. ";
+    }
+    if (typeof password !== "string" || password.length < 6) {
+      errors.password += "Password must be at least 6 characters. ";
+    }
+    const hasErrors = Object.values(errors).some(msg => msg)
+    if (!hasErrors) {
+      await registerUser({name, email, password});
+      return Astro.redirect("/login");
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+<h1>Login</h1>
+<form method="POST">
+  <label>
+    Username:
+    <input type="text" name="username" />
+  </label>
+  {errors.username && <p>{errors.username}</p>}
+  <label>
+    Email:
+    <input type="email" name="email" required />
+  </label>
+  {errors.email && <p>{errors.email}</p>}
+  <label>
+    Password:
+    <input type="password" name="password" required minlength="6" />
+  </label>
+  {errors.password && <p>{errors.password}</p>}
+  <button>Register</button>
+</form>

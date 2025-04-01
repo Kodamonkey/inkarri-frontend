@@ -1,0 +1,34 @@
+---
+import './src/styles/global.css'
+import BoardHeader from '../components/Dashboard/BoardHeader.astro'
+
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- HTML Meta Tags  -->
+		<title>Inckarri</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="Bienvenido a Inckarri, una página increíble." />
+
+	</head>
+	<body>
+		<BoardHeader />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
