@@ -1,27 +1,10 @@
 ---
 // const keys = Object.keys(users[0]) as Array<keyof (typeof users)[0]>;
 
-// ejemplo con api publica de spacexdata
-import { type APISpacexResponce } from "../../types/api.ts";
-const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    query: {},
-    options: {
-      limit: 10,
-      sort: {
-        flight_number: "desc",
-      },
-    },
-  }),
-});
+import { fetchLaunches } from "../../services/api-request";
 
-// const data = JSON.stringify(await res.json());
-// console.log(data);
-const { docs: launches } = (await res.json()) as APISpacexResponce;
+
+const launches = await fetchLaunches();
 ---
 
 <h1 class="font-bold">Lanzamiento Space X</h1>
@@ -37,7 +20,7 @@ const { docs: launches } = (await res.json()) as APISpacexResponce;
           <td>{launch.success ? "Success" : "Failure"}</td>
           <td>{launch.links.reddit.campaign}</td>
           <td>
-            <a href={`/dashboard/datails/${launch.id}`}>
+            <a href={`/dashboard/details/${launch.id}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
