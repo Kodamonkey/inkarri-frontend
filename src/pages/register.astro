@@ -3,18 +3,23 @@ import Auth from "../layouts/Auth.astro";
 ---
 
 <Auth>
-  <div class="flex h-32 ">
-    <bottom
-      class="background-color: #F2F2F2; flex-1 flex justify-center items-center"
-      onclick="window.location.href='/register/client'"
-    >
-      Cliente
-    </bottom>
-    <bottom
-      class="background-color: #F2F2F2; flex-1 flex justify-center items-center"
-      onclick="window.location.href='/register/company'"
-    >
-      Empresa
-    </bottom>
-  </div>
+  <div class="flex flex-col w-auto">
+    <div class="flex justify-center">
+      <h1 class="flex font-bold">Bienvenido, Como desea registrarse?</h1>
+    </div>
+    <div class="flex h-32">
+      <bottom
+        class="flex-1 flex justify-center items-center bg-gray-300 m-8"
+        onclick="window.location.href='/register/client'"
+      >
+        Cliente
+      </bottom>
+      <bottom
+        class="flex-1 flex justify-center items-center bg-gray-300 m-8"
+        onclick="window.location.href='/register/company'"
+      >
+        Empresa
+      </bottom>
+    </div>
+  <div/>
 </Auth>
