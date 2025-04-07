@@ -1,5 +1,5 @@
 ---
-
+export const prerender = false;
 ---
 
 <div class="relative w-full max-w-lg mx-auto overflow-hidden">
@@ -41,3 +41,29 @@
     >
   </div>
 </div>
+
+<script type="text/javascript" is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+
+    const carouselInner = document.getElementById('carousel-inner');
+    const slidesCount = carouselInner.children.length;
+
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carouselInner.style.transform = `translateX(${offset}%)`;
+    }
+
+    window.nextSlide = function () {
+      currentIndex = (currentIndex + 1) % slidesCount;
+      updateCarousel();
+    };
+
+    window.prevSlide = function () {
+      currentIndex = (currentIndex - 1 + slidesCount) % slidesCount;
+      updateCarousel();
+    };
+    setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+  });
+
+</script>
