@@ -19,9 +19,9 @@ if (Astro.request.method === "POST") {
     if (typeof password !== "string" || password.length < 6) {
       errors.password += "Password must be at least 6 characters. ";
     }
-    const hasErrors = Object.values(errors).some(msg => msg)
+    const hasErrors = Object.values(errors).some((msg) => msg);
     if (!hasErrors) {
-      await registerUser({name, email, password});
+      await registerUser({ name, email, password });
       return Astro.redirect("/login");
     }
   } catch (error) {
@@ -31,22 +31,88 @@ if (Astro.request.method === "POST") {
   }
 }
 ---
-<h1>Login</h1>
-<form method="POST">
-  <label>
-    Username:
-    <input type="text" name="username" />
-  </label>
-  {errors.username && <p>{errors.username}</p>}
-  <label>
-    Email:
-    <input type="email" name="email" required />
-  </label>
-  {errors.email && <p>{errors.email}</p>}
-  <label>
-    Password:
-    <input type="password" name="password" required minlength="6" />
-  </label>
-  {errors.password && <p>{errors.password}</p>}
-  <button>Register</button>
-</form>
+<div class="flex flex-col w-auto mt-20 border border-gray-300 rounded-lg bg-white">
+  <div class="my-6 mx-10 relative">
+    <div class=" w-full z-50 mx-auto max-w-6xl">
+      <h1 class="text-3xl">Login</h1>
+      <form method="POST">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 w-max col-span-2">
+          <div class="col-span-4">
+            <label for="email" class="block">Correo</label>
+            <div class="mt-2">
+              <div class="outline-1 outline-gray-200 -outline-offset-1 rounded-md flex items-center ">
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="Correo"
+                  required
+                  class="pl-3 pr-3 py-1.5 block grow min-w-0 rounded-md"
+                />
+              </div>
+            </div>  
+            {errors.email && <p>{errors.email}</p>}
+          </div>
+        <div class="col-span-4">
+          <label for="password" class="block">Contraseña</label>
+          <div class="mt-2">
+            <div class="outline-1 outline-gray-200 -outline-offset-1 rounded-md flex items-center ">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Contraseña"
+                required
+                class="pl-3 pr-3 py-1.5 block grow min-w-0 rounded-md"
+              />
+            </div>
+          </div>  
+          {errors.password && <p>{errors.password}</p>}
+        </div> 
+        <button type="submit" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition cursor-pointer">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h4>Registrase</h4>
+  <a href="/register">Ir al Registro</a>
+</div>
+
+<div class="dv-containers">
+  <div class="flex justify-between">
+    <div>© 2025 Inckarri, todos los derechos reservados.</div>
+    <ul class="flex gap-6 politicas-list ">
+      <li class="">
+        <a href="/">Políticas de Cookies</a>
+      </li>
+      <li class="">
+        <a href="/">Políticas de privacidad</a>
+      </li>
+      <li class="">
+        <a href="/">Ayuda</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  @layer components {
+    .politicas-list li:not(:last-child)::after {
+      content: "";
+      display: inline-block;
+      margin-left: 1rem;
+      height: 1rem;
+      border-left: 2px solid black;
+    }
+    .dv-containers:not(:last-child)::after {
+      content: "";
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      border-top: 2px solid black;
+    }
+  }
+</style>

@@ -1,57 +1,73 @@
 ---
+import carouselData from "../data/carouselData.json";
 export const prerender = false;
 ---
 
-<div class="relative w-full max-w-lg mx-auto overflow-hidden">
+<div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg">
+  <!-- Carousel inner -->
   <div
     class="flex transition-transform duration-500 ease-in-out"
     id="carousel-inner"
   >
-    <div class="min-w-full">
-      <img
-        src="/public/images/inckarri_image.jpg"
-        alt="Imagen 1"
-        class="w-full"
-      />
-    </div>
-    <div class="min-w-full">
-      <img
-        src="/public/images/inckarri_image.jpg"
-        alt="Imagen 2"
-        class="w-full"
-      />
-    </div>
-    <div class="min-w-full">
-      <img
-        src="/public/images/inckarri_image.jpg"
-        alt="Imagen 3"
-        class="w-full"
-      />
-    </div>
+    {
+      carouselData.map((item, index) => (
+      <div class="min-w-full flex justify-between p-4 pr-0 bg-gray-100 rounded-xl max-w-2xl h-[450px]">
+          <div class="w-1/2 p-8 text-left justify-center flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">{item.titulo}</h2>
+            <p class="mb-4">{item.descripcion}</p>
+            <a href="#" class="border px-4 py-2 rounded hover:bg-gray-300 transition max-w-72 text-center">Ver información</a>
+          </div>
+          <div class="w-1/2">
+            <img src={item.imagen} alt={`Imagen ${index + 1}`} class="w-full h-full object-cover rounded" />
+          </div>
+        </div>
+      ))
+    }
   </div>
-  <div
-    id="carrousel"
-    class="absolute top-1/2 w-full flex justify-between transform -translate-y-1/2"
-  >
-    <button onclick="prevSlide()" class="bg-black bg-opacity-50 text-white p-2"
-      >&#10094;</button
-    >
-    <button onclick="nextSlide()" class="bg-black bg-opacity-50 text-white p-2"
-      >&#10095;</button
-    >
-  </div>
-</div>
 
+  <!-- Botones de navegación -->
+  <!-- <div
+    id="carrousel"
+    class="absolute top-1/2 w-full flex justify-between transform -translate-y-1/2 px-4"
+  >
+    <button onclick="prevSlide()" class="bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer">
+      &#10094;
+    </button>
+    <button onclick="nextSlide()" class="bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer">
+      &#10095;
+    </button>
+  </div>
+</div> -->
+
+<!-- Indicadores -->
+<ol class="carousel-indicators flex justify-center gap-2 mt-4">
+  {
+    carouselData.map((_, index) => (
+      <li
+        class="w-3 h-3 rounded-full bg-gray-400 cursor-pointer"
+        data-slide-to={index}
+        onclick="goToSlide({index})"
+      ></li>
+    ))
+  }
+</ol>
+
+<!-- Script -->
 <script type="text/javascript" is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     const carouselInner = document.getElementById('carousel-inner');
+    const indicators = document.querySelectorAll('.carousel-indicators li');
     const slidesCount = carouselInner.children.length;
 
     function updateCarousel() {
       const offset = -currentIndex * 100;
       carouselInner.style.transform = `translateX(${offset}%)`;
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle('bg-gray-500', i === currentIndex);
+        dot.classList.toggle('bg-gray-400', i !== currentIndex);
+      });
     }
 
     window.nextSlide = function () {
@@ -63,7 +79,17 @@ export const prerender = false;
       currentIndex = (currentIndex - 1 + slidesCount) % slidesCount;
       updateCarousel();
     };
-    setInterval(nextSlide, 5000); // Cambia cada 5 segundos
-  });
 
+    window.goToSlide = function (index) {
+      currentIndex = index;
+      updateCarousel();
+    };
+
+    indicators.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    updateCarousel();
+    setInterval(nextSlide, 8000); // Cambia cada 8 segundos
+  });
 </script>

@@ -1,9 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Carousel from '../components/Carousel.astro';
-
+import Carousel from "../components/Carousel.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout hideLayout={false}> 
-	<Carousel />
+<Layout hideLayout={false}>
+	<div class="flex flex-col gap-14">
+		<div class="flex flex-col items-center justify-center text-center p-6">
+			<div class="mb-4 max-w-xl text-3xl">
+			  <strong class="block mb-2">Nombre Empresa: Lorum ipsum</strong>
+			  Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque culpa et doloribus? Nesciunt, iusto iure!.
+			</div>
+			<div>
+			  <a
+			    href="#"
+			    class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition"
+			  >
+			    Contactanos
+			  </a>
+			</div>
+		      </div>
+
+		<div class="">
+			<div class="flex place-content-center">
+				<strong class="text-2xl">Nuestros Servicios</strong>
+			</div>
+			<div class="flex place-content-center">
+				Busca productos de acuerdo a tus necesidades.
+			</div>
+		</div>
+		<Carousel />
+
+		<div class="mx-auto max-w-5xl">
+			<ul class="grid grid-cols-3 gap-4 p-4 text-center">
+			  <li>
+			    <div class="text-6xl font-bold">72</div>
+			    <div class="text-base mt-2">Categorías de productos disponibles</div>
+			  </li>
+			  <li>
+			    <div class="text-6xl font-bold">+1500</div>
+			    <div class="text-base mt-2">Clientes que utilizan nuestro portal</div>
+			  </li>
+			  <li>
+			    <div class="text-6xl font-bold">43</div>
+			    <div class="text-base mt-2">Empresas indígenas listas para satisfacer tus necesidades</div>
+			  </li>
+			</ul>
+		      </div>
+		      
+		<div class="grid grid-cols-6 gap-4 p-4 mx-auto">
+			<div class="w-24 h-24 bg-gray-100"></div>
+			<div class="w-24 h-24 bg-gray-100"></div>
+			<div class="w-24 h-24 bg-gray-100"></div>
+			<div class="w-24 h-24 bg-gray-100"></div>
+			<div class="w-24 h-24 bg-gray-100"></div>
+			<div class="w-24 h-24 bg-gray-100"></div>
+		</div>
+	</div>
 </Layout>

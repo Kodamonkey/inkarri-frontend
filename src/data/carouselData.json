@@ -1,0 +1,22 @@
+[
+  {
+    "titulo": "Cotizaciones",
+    "descripcion": "Software que te permitirá hacer una búsqueda entre cientos de empresas para encontrar tu producto ideal.",
+    "imagen": "/public/images/inckarri_image.jpg"
+  },
+  {
+    "titulo": "Evaluación Comercial",
+    "descripcion": "Profesionales que evaluarán y puntuarán todo lo que busques, para ofrecer productos de calidad.",
+    "imagen": "/public/images/inckarri_image.jpg"
+  },
+  {
+    "titulo": "Logística",
+    "descripcion": "Aprende sobre los saberes que han perdurado siglos.",
+    "imagen": "/public/images/inckarri_image.jpg"
+  },
+  {
+    "titulo": "Facturación, pagos, ordenés de compra y más",
+    "descripcion": "Aprende sobre los saberes que han perdurado siglos.",
+    "imagen": "/public/images/inckarri_image.jpg"
+  }
+]

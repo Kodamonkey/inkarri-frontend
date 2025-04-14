@@ -2,14 +2,27 @@
 
 /* Definir estilo de fuentes */
 @font-face {
-    font-family: "familia";
-    src: url();
-    font-weight: 400;
-    font-display: swap;
+  font-family: "familia";
+  src: url();
+  font-weight: 400;
+  font-display: swap;
 }
 
+:root {
+  font-size: 16px;
+}
 
 /* Asignar estilos de fuentes */
 html {
-    font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  margin-left: 16em;
+  margin-right: 16rem;
+}
+
+main {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
