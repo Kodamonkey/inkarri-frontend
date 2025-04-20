@@ -1,0 +1,5 @@
+[
+  { "id": 1, "label": "Opción A", "value": "a" },
+  { "id": 2, "label": "Opción B", "value": "b" },
+  { "id": 3, "label": "Opción C", "value": "c" }
+]

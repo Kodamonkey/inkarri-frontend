@@ -41,7 +41,7 @@ const launches = await fetchLaunches();
 </div>
 
 <div class="overflow-x-auto">
-  <table class="min-w-full border border-gray-200 rounded-lg shadow-sm text-sm text-left text-gray-600">
+	<table class="min-w-full w-full border border-collapse border-gray-200 rounded-lg shadow-sm text-sm text-left text-gray-600">
     <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
       <tr>
         <th class="px-4 py-3">Nombre</th>
@@ -60,7 +60,7 @@ const launches = await fetchLaunches();
     <tbody class="bg-white divide-y divide-gray-200">
       {
         launches.map((launch) => (
-          <tr class="hover:bg-gray-50 transition-colors" data-id={launch.id}>
+          <tr class="hover:bg-gray-50 transition-colors even:bg-gray-200" data-id={launch.id}>
             <td class="px-4 py-3">{launch.name}</td>
             <td class="px-4 py-3">{launch.flight_number}</td>
             <td class="px-4 py-3">{"N/A"}</td>
@@ -104,20 +104,10 @@ const launches = await fetchLaunches();
 </div>
             
 <style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
   td,
   th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
   }
 </style>

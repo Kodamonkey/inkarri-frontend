@@ -23,7 +23,7 @@ if (id) {
         <h1 class="font-bold text-2xl mb-4 text-center">Solicitud de compra</h1>
 
         <div class="overflow-x-auto">
-        <table class="min-w-full border border-gray-200 rounded-lg shadow-sm text-sm text-left text-gray-600">
+			<table class="min-w-full w-full border border-gray-200 rounded-lg shadow-sm border-collapse text-sm text-left text-gray-600">
             <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
             <tr>
                 <th class="px-4 py-3">Nombre</th>
@@ -42,20 +42,20 @@ if (id) {
             <tbody class="bg-white divide-y divide-gray-200">
             {
                 <tr class="hover:bg-gray-50 transition-colors" data-id={launch?.id}>
-                    <td class="px-4 py-3">{launch?.name}</td>
-                    <td class="px-4 py-3">{launch?.flight_number}</td>
-                    <td class="px-4 py-3">{"N/A"}</td>
-                    <td class="px-4 py-3">{"N/A"}</td>
-                    <td class="px-4 py-3">{launch?.date_utc}</td>
-                    <td class="px-4 py-3">{"—"}</td>
-                    <td class="px-4 py-3">{"—"}</td>
-                    <td class="px-4 py-3">{"—"}</td>
-                    <td class="px-4 py-3">{"SpaceX"}</td>
-                    <td class="px-4 py-3">
-                    <span class={`px-2 py-1 rounded-full text-xs font-semibold ${launch?.success ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                        {launch?.success ? "Éxito" : "Fallo"}
-                    </span>
-                    </td>
+										<td class="px-4 py-3">{launch?.name}</td>
+										<td class="px-4 py-3">{launch?.flight_number}</td>
+										<td class="px-4 py-3">{"N/A"}</td>
+										<td class="px-4 py-3">{"N/A"}</td>
+										<td class="px-4 py-3">{launch?.date_utc}</td>
+										<td class="px-4 py-3">{"—"}</td>
+										<td class="px-4 py-3">{"—"}</td>
+										<td class="px-4 py-3">{"—"}</td>
+										<td class="px-4 py-3">{"SpaceX"}</td>
+										<td class="px-4 py-3">
+											<span class={`px-2 py-1 rounded-full text-xs font-semibold ${launch?.success ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+												{launch?.success ? "Éxito" : "Fallo"}
+											</span>
+										</td>	
                     <td class="px-4 py-3">
                     <a href={`/dashboard/details/${launch?.id}`} class="text-blue-600 hover:text-blue-800">
                         <svg
@@ -100,20 +100,10 @@ if (id) {
 
             
 <style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
   td,
   th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
   }
 </style>
